@@ -27,6 +27,33 @@ int space(char c)
     return (0);
 }
 
+void    check_empty_arg(char **argv)
+{
+    int i;
+    int j;
+    int count;
+
+    i = 1;
+    while (argv[i])
+    {
+        j = 0;
+        count = 0;
+        while (argv[i][j])
+        {
+            if (digit(argv[i][j]))
+                count++;
+            // printf("count = %d\n", count);
+            j++;
+        }
+        i++;
+    }
+    if (count == 0)
+    {
+        write(1, "Error8\n", 7);
+        exit(1);
+    }
+}
+
 void check_characters(char **argv, char **array)
 {
     int i;
@@ -52,6 +79,7 @@ void check_characters(char **argv, char **array)
         }
         i++;
     }
+    check_empty_arg(argv);
 }
 
 void fill_tab(char **array, int size)
@@ -60,6 +88,12 @@ void fill_tab(char **array, int size)
     int tab[size];
 
     i = 0;
+    if (array[1] == NULL)
+    {
+        ft_free(array);
+        write(1, "Errorf\n", 7);
+        exit(1);
+    }
     while (i < size)
     {
         tab[i] = ft_atolong(array[i]);
