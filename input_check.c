@@ -27,7 +27,7 @@ int space(char c)
     return (0);
 }
 
-void    check_empty_arg(char **argv)
+void    check_empty_arg(char **argv, char **array)
 {
     int i;
     int j;
@@ -49,6 +49,7 @@ void    check_empty_arg(char **argv)
     }
     if (count == 0)
     {
+        free(array);
         write(1, "Error8\n", 7);
         exit(1);
     }
@@ -73,45 +74,16 @@ void check_characters(char **argv, char **array)
             {
                 free(array);
                 write(2, "Error3\n", 7);
-                system("leaks a.out");
                 exit(1);
             }
             j++;
         }
         i++;
     }
-    check_empty_arg(argv);
+    check_empty_arg(argv, array);
 }
 
-// void fill_tab(char **array, int size)
-// {
-//     int i;
-//     int tab[size];
-
-//     i = 0;
-//     if (array[1] == NULL)
-//     {
-//         ft_free(array);
-//         write(1, "Errorf\n", 7);
-//         exit(1);
-//     }
-//     while (i < size)
-//     {
-//         tab[i] = ft_atolong(array[i]);
-//         i++;
-//     }
-//     i = 0;
-//     while (i < size)
-//     {
-//         printf("tab[%d] = %d\n", i, tab[i]);
-//         i++;
-//     }
-//     //sort_tab(tab, size, array);
-// }
-
-
-
-void check_duplicate(char **array, char **split, int j, int x)
+void fill_array(char **array, char **split, int j, int x)
 {
     long num;
     int k;
@@ -119,6 +91,8 @@ void check_duplicate(char **array, char **split, int j, int x)
     array[x] = ft_strdup(split[j]);
     if (array[x] == NULL)
     {
+        ft_free(array);
+        ft_free(split);
         write(1, "Error7\n", 7);
         exit(1);
     }
@@ -140,7 +114,7 @@ void check_args(int argc, char **argv, char **array)
         j = 0;
         while (split[j])
         {
-            check_duplicate(array, split, j, x);
+            fill_array(array, split, j, x);
             x++;
             j++;
         }

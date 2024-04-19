@@ -12,28 +12,30 @@
 
 #include "push_swap.h"
 
-void    fill_tab(t_stack_node *a , int size)
+void    fill_tab(t_stack_node **a , int size)
 {
     int i;
     int tab[size];
+    t_stack_node *tmp;
 
     i = 0;
-    while (a)
+    tmp = *a;
+    while (tmp)
     {
-        tab[i] = a->nbr;
-        a = a->next;
+        tab[i] = tmp->nbr;
+        tmp = tmp->next;
         i++;
     }
     i = 0;
     while (i < size)
     {
-        printf("%d\n", tab[i]);
+        printf("tab[%d] = %d\n",i ,  tab[i]);
         i++;
     }
     sort_tab(tab, size, a);
 }
 
-void sort_tab(int *tab, int size, t_stack_node *a)
+void sort_tab(int *tab, int size, t_stack_node **a)
 {
     int i;
     int j;
@@ -57,7 +59,7 @@ void sort_tab(int *tab, int size, t_stack_node *a)
     }
     if (number == 0)
     {
-        free_stack(&a);
+        free_stack(a);
         write(1, "already sorted\n", 15);
         exit(1);
     }
@@ -111,25 +113,21 @@ void    check_double(t_stack_node **a)
 void init_stack(t_stack_node **a, char **array)
 {
     int i;
-    t_stack_node *new_node;
+    t_stack_node *n_node;
     t_stack_node *tmp;
 
     i = 0;
     while (array[i])
     {
-        new_node = malloc(sizeof(t_stack_node));
-        if (new_node == NULL)
-            exit(1);
-        new_node->nbr = ft_atolong(array[i]);
-        new_node->next = NULL;
+        n_node = new_node(ft_atolong(array[i]));
         if (*a == NULL)
-            *a = new_node;
+            *a = n_node;
         else
         {
             tmp = *a;
             while (tmp->next)
                 tmp = tmp->next;
-            tmp->next = new_node;
+            tmp->next = n_node;
         }
         i++;
     }
@@ -142,7 +140,6 @@ int main(int argc, char **argv)
     char **array;
     t_stack_node *a;
     t_stack_node *b;
-    int i;
 
     a = NULL;
     b = NULL;
@@ -154,8 +151,8 @@ int main(int argc, char **argv)
     check_characters(argv, array);
     check_args(argc, argv, array);
     init_stack(&a, array);
-    i = node_size(a);
-    fill_tab(a, i);
+    fill_tab(&a, number_of_args(argc, argv));
+    printf("000000000000000000000\n");
     free_stack(&a);
     return (0);
 }

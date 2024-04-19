@@ -1,13 +1,14 @@
 #include "push_swap.h"
 
-void free_stack(t_stack_node **head)
+void free_stack(t_stack_node **a)
 {
     t_stack_node *tmp;
 
-    while (*head)
+    while (*a)
     {
-        tmp = *head;
-        *head = (*head)->next;
+        tmp = *a;
+        *a = (*a)->next;
         free(tmp);
     }
+    free(*a);
 }
