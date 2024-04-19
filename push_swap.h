@@ -37,9 +37,9 @@ typedef struct s_stack_node
 void    ft_free(char **array);
 void    check_args(int argc, char **argv, char **array);
 long    ft_atolong(const char *str);
-void    fill_tab(char **array, int size);
+void    fill_tab(t_stack_node *a, int i);
 void    init_stack(t_stack_node **a, char **array);
-void    sort_tab(int *tab, int size, char **array);
+void    sort_tab(int *tab, int size, t_stack_node *a);
 void    check_characters(char **argv, char **array);
 void    ft_swap(int *a, int *b);
 int     space(char c);
@@ -56,5 +56,5 @@ void    reverse_rotate_a(t_stack_node **a);
 void    reverse_rotate_b(t_stack_node **b);
 void    reverse_rotate_r(t_stack_node **a, t_stack_node **b);
 void    free_stack(t_stack_node **a);
-
+int     node_size(t_stack_node *lst);
 #endif

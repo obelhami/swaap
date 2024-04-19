@@ -12,6 +12,57 @@
 
 #include "push_swap.h"
 
+void    fill_tab(t_stack_node *a , int size)
+{
+    int i;
+    int tab[size];
+
+    i = 0;
+    while (a)
+    {
+        tab[i] = a->nbr;
+        a = a->next;
+        i++;
+    }
+    i = 0;
+    while (i < size)
+    {
+        printf("%d\n", tab[i]);
+        i++;
+    }
+    sort_tab(tab, size, a);
+}
+
+void sort_tab(int *tab, int size, t_stack_node *a)
+{
+    int i;
+    int j;
+    int number;
+
+    number = 0;
+    i = 0;
+    while (i < size)
+    {
+        j = i;
+        while (j < size)
+        {
+            if (tab[i] > tab[j])
+            {
+                ft_swap(&tab[i], &tab[j]);
+                number++;
+            }
+            j++;
+        }
+        i++;
+    }
+    if (number == 0)
+    {
+        free_stack(&a);
+        write(1, "already sorted\n", 15);
+        exit(1);
+    }
+}
+
 int number_of_args(int argc, char **argv)
 {
     int i;
@@ -33,6 +84,28 @@ int number_of_args(int argc, char **argv)
         i++;
     }
     return (size);
+}
+void    check_double(t_stack_node **a)
+{
+    t_stack_node    *tmp;
+    t_stack_node    *tmp2;
+
+    tmp = *a;
+    while (tmp)
+    {
+        tmp2 = tmp->next;
+        while (tmp2)
+        {
+            if (tmp->nbr == tmp2->nbr)
+            {
+                free_stack(a);
+                write(2, "errordbl\n", 9);
+                exit(1);
+            }
+            tmp2 = tmp2->next;
+        }
+       tmp = tmp->next;
+    }
 }
 
 void init_stack(t_stack_node **a, char **array)
@@ -60,11 +133,8 @@ void init_stack(t_stack_node **a, char **array)
         }
         i++;
     }
-    while (*a)
-    {
-        printf("%d\n", (*a)->nbr);
-        *a = (*a)->next;
-    }
+    ft_free(array);
+    check_double(a);
 }
 
 int main(int argc, char **argv)
@@ -72,6 +142,7 @@ int main(int argc, char **argv)
     char **array;
     t_stack_node *a;
     t_stack_node *b;
+    int i;
 
     a = NULL;
     b = NULL;
@@ -83,7 +154,8 @@ int main(int argc, char **argv)
     check_characters(argv, array);
     check_args(argc, argv, array);
     init_stack(&a, array);
-    ft_free(array);
+    i = node_size(a);
+    fill_tab(a, i);
     free_stack(&a);
     return (0);
 }
