@@ -109,7 +109,7 @@ void    check_max_int(char **array)
     {
         printf("strlen = %ld\n", ft_strlen(array[i]));
         printf("count = %d\n", count_string(array[i]));
-        if (ft_strlen(array[i]) - count_string(array[i]) > 10)
+        if (ft_strlen(array[i]) - count_string(array[i]) > 11)
         {
             ft_free(array);
             write(1, "Error5\n", 7);
