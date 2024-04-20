@@ -32,10 +32,5 @@ long    ft_atolong(const char *str)
         res = res * 10 + *str - '0';
         str++;
     }
-    if ((res > 2147483647 && sign == 1) || (res > 2147483648 && sign == -1))
-    {
-        write(1, "Error\n", 6);
-        exit(1);
-    }
     return (res * sign);
 }

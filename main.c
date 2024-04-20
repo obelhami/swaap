@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void    fill_tab(t_stack_node **a , int size)
+void fill_tab(t_stack_node **a, int size)
 {
     int i;
     int tab[size];
@@ -29,7 +29,7 @@ void    fill_tab(t_stack_node **a , int size)
     i = 0;
     while (i < size)
     {
-        printf("tab[%d] = %d\n",i ,  tab[i]);
+        printf("tab[%d] = %d\n", i, tab[i]);
         i++;
     }
     sort_tab(tab, size, a);
@@ -87,10 +87,10 @@ int number_of_args(int argc, char **argv)
     }
     return (size);
 }
-void    check_double(t_stack_node **a)
+void check_double(t_stack_node **a)
 {
-    t_stack_node    *tmp;
-    t_stack_node    *tmp2;
+    t_stack_node *tmp;
+    t_stack_node *tmp2;
 
     tmp = *a;
     while (tmp)
@@ -106,7 +106,7 @@ void    check_double(t_stack_node **a)
             }
             tmp2 = tmp2->next;
         }
-       tmp = tmp->next;
+        tmp = tmp->next;
     }
 }
 
