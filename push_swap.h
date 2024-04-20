@@ -39,7 +39,11 @@ void    check_args(int argc, char **argv, char **array);
 long    ft_atolong(const char *str);
 void    fill_tab(t_stack_node **a, int i);
 void    init_stack(t_stack_node **a, char **array);
+<<<<<<< Updated upstream
 void    sort_tab(int *tab, int size, t_stack_node **a);
+=======
+void    sort_tab(int *tab, int size, t_stack_node *a);      
+>>>>>>> Stashed changes
 void    check_characters(char **argv, char **array);
 void    ft_swap(int *a, int *b);
 int     space(char c);
