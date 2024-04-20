@@ -66,9 +66,7 @@ void check_characters(char **argv, char **array)
         j = 0;
         while (argv[i][j])
         {
-            if ((argv[i][j] == '+' || argv[i][j] == '-') && (argv[i][j + 1] >= '0'
-            && argv[i][j + 1] <= '9')
-            && (argv[i][j - 1] == ' ' || argv[i][j - 1] == '\0'))
+            if ((argv[i][j] == '+' || argv[i][j] == '-') && (argv[i][j + 1] >= '0' && argv[i][j + 1] <= '9') && (argv[i][j - 1] == ' ' || argv[i][j - 1] == '\0'))
                 j++;
             if (!digit(argv[i][j]) && !space(argv[i][j]))
             {
@@ -81,6 +79,51 @@ void check_characters(char **argv, char **array)
         i++;
     }
     check_empty_arg(argv, array);
+}
+
+int count_string(char *str)
+{
+    int i;
+    int count;
+
+    i = 0;
+    count = 0;
+    if (str[i] == '-' || str[i] == '+')
+        i++;
+    while (str[i])
+    {
+        if (str[i] == '0')
+            count++;
+        i++;
+    }
+    return (count);
+}
+
+void    check_max_int(char **array)
+{
+    int i;
+    long num;
+
+    i = 0;
+    while (array[i])
+    {
+        printf("strlen = %ld\n", ft_strlen(array[i]));
+        printf("count = %d\n", count_string(array[i]));
+        if (ft_strlen(array[i]) - count_string(array[i]) > 10)
+        {
+            ft_free(array);
+            write(1, "Error5\n", 7);
+            exit(1);
+        }
+        num = ft_atolong(array[i]);
+        if (num > 2147483647 || num < -2147483648)
+        {
+            ft_free(array);
+            write(1, "Error4\n", 7);
+            exit(1);
+        }
+        i++;
+    }
 }
 
 void fill_array(char **array, char **split, int j, int x)
@@ -119,7 +162,8 @@ void check_args(int argc, char **argv, char **array)
             j++;
         }
         i++;
-    ft_free(split);
+        ft_free(split);
     }
     array[x] = NULL;
+    check_max_int(array);
 }
