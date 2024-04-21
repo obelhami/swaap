@@ -134,9 +134,60 @@ void init_stack(t_stack_node **a, char **array)
     ft_free(array);
     check_double(a);
 }
+void    sorted_two(t_stack_node **a, int size)
+{
+    t_stack_node *tmp;
+
+    tmp = *a;
+    if (size == 2)
+    {
+        write(1, "sa\n", 3);
+        swap_a(a);
+    }
+}
+void    sorted_three(t_stack_node **a, int size)
+{
+    t_stack_node *tmp;
+
+    tmp = *a;
+    if (size == 3)
+    {
+        if (tmp->nbr > tmp->next->nbr && tmp->nbr < tmp->next->next->nbr)
+        {
+            write(1, "sa\n", 3);
+            swap_a(a);
+        }
+        else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr < tmp->next->next->nbr)
+        {
+            write(1, "ra\n", 3);
+            rotate_a(a);
+        }
+        else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
+        {
+            write(1, "sa\n", 3);
+            swap_a(a);
+            write(1, "rra\n", 4);
+            reverse_rotate_a(a);
+        }
+        else if (tmp->nbr < tmp->next->nbr && tmp->nbr < tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
+        {
+            write(1, "rra\n", 4);
+            reverse_rotate_a(a);
+        }
+    }
+}
+
+
+void sorted_stack(t_stack_node **a, t_stack_node **b, int size)
+{
+    sorted_two(a, size);
+    sorted_three(a, size);
+
+}
 
 int main(int argc, char **argv)
 {
+    int size;
     char **array;
     t_stack_node *a;
     t_stack_node *b;
@@ -145,6 +196,7 @@ int main(int argc, char **argv)
     b = NULL;
     if (argc < 2)
         return (0);
+    size = number_of_args(argc, argv);
     array = malloc(sizeof(char *) * (number_of_args(argc, argv) + 1));
     if (!array)
         return (0);
@@ -152,7 +204,7 @@ int main(int argc, char **argv)
     check_args(argc, argv, array);
     init_stack(&a, array);
     fill_tab(&a, number_of_args(argc, argv));
-    printf("000000000000000000000\n");
+    sorted_stack(&a, &b, size);
     free_stack(&a);
     return (0);
 }
