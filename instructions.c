@@ -75,8 +75,8 @@ void	push_b(t_stack_node **a, t_stack_node **b)
 
 void	rotate_a(t_stack_node **a)
 {
-	t_stack_node *tmp;
-	t_stack_node *tmp2;
+	t_stack_node	*tmp;
+	t_stack_node	*tmp2;
 
 	if (*a && (*a)->next)
 	{
@@ -92,9 +92,9 @@ void	rotate_a(t_stack_node **a)
 }
 
 void	rotate_b(t_stack_node **b)
-{ 
-	t_stack_node *tmp;
-	t_stack_node *tmp2;
+{
+	t_stack_node	*tmp;
+	t_stack_node	*tmp2;
 
 	if (*b && (*b)->next)
 	{
@@ -117,8 +117,8 @@ void	rotate_r(t_stack_node **a, t_stack_node **b)
 
 void	reverse_rotate_a(t_stack_node **a)
 {
-	t_stack_node *tmp;
-	t_stack_node *tmp2;
+	t_stack_node	*tmp;
+	t_stack_node	*tmp2;
 
 	if (*a && (*a)->next)
 	{
@@ -133,11 +133,10 @@ void	reverse_rotate_a(t_stack_node **a)
 	write(1, "rra\n", 4);
 }
 
-
 void	reverse_rotate_b(t_stack_node **b)
 {
-	t_stack_node *tmp;
-	t_stack_node *tmp2;
+	t_stack_node	*tmp;
+	t_stack_node	*tmp2;
 
 	if (*b && (*b)->next)
 	{
@@ -150,7 +149,6 @@ void	reverse_rotate_b(t_stack_node **b)
 		tmp2->next = NULL;
 	}
 	write(1, "rrb\n", 4);
-
 }
 
 void	reverse_rotate_r(t_stack_node **a, t_stack_node **b)
