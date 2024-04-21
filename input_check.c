@@ -107,8 +107,6 @@ void    check_max_int(char **array)
     i = 0;
     while (array[i])
     {
-        printf("strlen = %ld\n", ft_strlen(array[i]));
-        printf("count = %d\n", count_string(array[i]));
         if (ft_strlen(array[i]) - count_string(array[i]) > 11)
         {
             ft_free(array);

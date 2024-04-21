@@ -22,6 +22,7 @@ void	swap_a(t_stack_node **a)
 		tmp->next = *a;
 		*a = tmp;
 	}
+	write(1, "sa\n", 3);
 }
 
 void	swap_b(t_stack_node **b)
@@ -35,6 +36,7 @@ void	swap_b(t_stack_node **b)
 		tmp->next = *b;
 		*b = tmp;
 	}
+	write(1, "sb\n", 3);
 }
 
 void	swap_s(t_stack_node **a, t_stack_node **b)
@@ -47,8 +49,6 @@ void	push_a(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*tmp;
 
-	if (*a == NULL)
-		return ;
 	if (*b)
 	{
 		tmp = *b;
@@ -56,14 +56,13 @@ void	push_a(t_stack_node **a, t_stack_node **b)
 		tmp->next = *a;
 		*a = tmp;
 	}
+	write(1, "pa\n", 3);
 }
 
 void	push_b(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*tmp;
 
-	if (*b == NULL)
-		return ;
 	if (*a)
 	{
 		tmp = *a;
@@ -71,6 +70,7 @@ void	push_b(t_stack_node **a, t_stack_node **b)
 		tmp->next = *b;
 		*b = tmp;
 	}
+	write(1, "pb\n", 3);
 }
 
 void	rotate_a(t_stack_node **a)
@@ -88,6 +88,7 @@ void	rotate_a(t_stack_node **a)
 		tmp2->next = tmp;
 		tmp->next = NULL;
 	}
+	write(1, "ra\n", 3);
 }
 
 void	rotate_b(t_stack_node **b)
@@ -105,6 +106,7 @@ void	rotate_b(t_stack_node **b)
 		tmp2->next = tmp;
 		tmp->next = NULL;
 	}
+	write(1, "rb\n", 3);
 }
 
 void	rotate_r(t_stack_node **a, t_stack_node **b)
@@ -128,7 +130,9 @@ void	reverse_rotate_a(t_stack_node **a)
 		*a = tmp2->next;
 		tmp2->next = NULL;
 	}
+	write(1, "rra\n", 4);
 }
+
 
 void	reverse_rotate_b(t_stack_node **b)
 {
@@ -145,6 +149,8 @@ void	reverse_rotate_b(t_stack_node **b)
 		*b = tmp2->next;
 		tmp2->next = NULL;
 	}
+	write(1, "rrb\n", 4);
+
 }
 
 void	reverse_rotate_r(t_stack_node **a, t_stack_node **b)

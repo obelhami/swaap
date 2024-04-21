@@ -26,12 +26,6 @@ void fill_tab(t_stack_node **a, int size)
         tmp = tmp->next;
         i++;
     }
-    i = 0;
-    while (i < size)
-    {
-        printf("tab[%d] = %d\n", i, tab[i]);
-        i++;
-    }
     sort_tab(tab, size, a);
 }
 
@@ -146,179 +140,104 @@ void    sorted_two(t_stack_node **a, int size)
     }
 }
 
-void handle_swap_and_rotate(t_stack_node **a, t_stack_node *tmp)
-{
-    if (tmp->nbr > tmp->next->nbr && tmp->nbr < tmp->next->next->nbr)
-    {
-        write(1, "sa\n", 3);
-        swap_a(a);
-    }
-    else if (tmp->nbr < tmp->next->nbr && tmp->nbr < tmp->next->next->nbr
-        && tmp->next->nbr > tmp->next->next->nbr)
-    {
-        write(1, "sa\n", 3);
-        swap_a(a);
-        write(1, "ra\n", 3);
-        rotate_a(a);
-    }
-}
-
-void handle_rotate_and_reverse(t_stack_node **a, t_stack_node *tmp)
-{
-    if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr
-        && tmp->next->nbr < tmp->next->next->nbr)
-    {
-        write(1, "ra\n", 3);
-        rotate_a(a);
-    }
-    else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr
-        && tmp->next->nbr > tmp->next->next->nbr)
-    {
-        write(1, "sa\n", 3);
-        swap_a(a);
-        write(1, "rra\n", 4);
-        reverse_rotate_a(a);
-    }
-    else if (tmp->nbr < tmp->next->nbr && tmp->nbr > tmp->next->next->nbr
-        && tmp->next->nbr > tmp->next->next->nbr)
-    {
-        write(1, "rra\n", 4);
-        reverse_rotate_a(a);
-    }
-}
-
-void sorted_three(t_stack_node **a, int size)
+void    sorted_three(t_stack_node **a, int size)
 {
     t_stack_node *tmp;
 
     tmp = *a;
     if (size == 3)
     {
-        handle_swap_and_rotate(a, tmp);
-        handle_rotate_and_reverse(a, tmp);
+        if (tmp->nbr > tmp->next->nbr && tmp->nbr < tmp->next->next->nbr)
+        {
+            // write(1, "sa\n", 3);
+            swap_a(a);
+        }
+        else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr < tmp->next->next->nbr)
+        {
+            // write(1, "ra\n", 3);
+            rotate_a(a);
+        }
+        else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
+        {
+            // write(1, "sa\n", 3);
+            swap_a(a);
+            // write(1, "rra\n", 4);
+            reverse_rotate_a(a);
+        }
+        else if (tmp->nbr < tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
+        {
+            // write(1, "rra\n", 4);
+            reverse_rotate_a(a);
+        }
+        else if (tmp->nbr < tmp->next->nbr && tmp->nbr < tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
+        {
+            // write(1, "sa\n", 3);
+            swap_a(a);
+            // write(1, "ra\n", 3);
+            rotate_a(a);
+        }
     }
 }
-// void    sorted_three(t_stack_node **a, int size)
-// {
-//     t_stack_node *tmp;
 
-//     tmp = *a;
-//     if (size == 3)
-//     {
-//         if (tmp->nbr > tmp->next->nbr && tmp->nbr < tmp->next->next->nbr)
-//         {
-//             write(1, "sa\n", 3);
-//             swap_a(a);
-//         }
-//         else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr < tmp->next->next->nbr)
-//         {
-//             write(1, "ra\n", 3);
-//             rotate_a(a);
-//         }
-//         else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
-//         {
-//             write(1, "sa\n", 3);
-//             swap_a(a);
-//             write(1, "rra\n", 4);
-//             reverse_rotate_a(a);
-//         }
-//         else if (tmp->nbr < tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
-//         {
-//             write(1, "rra\n", 4);
-//             reverse_rotate_a(a);
-//         }
-//         else if (tmp->nbr < tmp->next->nbr && tmp->nbr < tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
-//         {
-//             write(1, "sa\n", 3);
-//             swap_a(a);
-//             write(1, "ra\n", 3);
-//             rotate_a(a);
-//         }
-//     }
-// }
-
-// void    search_smallest(t_stack_node *tmp, t_stack_node **a, t_stack_node **b)
-// {
-//     int i;
-//     int j;
-//     int smallest;
-//     t_stack_node *tmp2;
-
-//     i = 0;
-//     j = 0;
-//     smallest = tmp->nbr;
-//     tmp2 = tmp;
-//     while (tmp)
-//     {
-//         if (tmp->nbr < smallest)
-//         {
-//             smallest = tmp->nbr;
-//             tmp2 = tmp;
-//         }
-//         tmp = tmp->next;
-//         i++;
-//     }
-//     while (j < i)
-//     {
-//         if (tmp2->nbr == (*a)->nbr)
-//         {
-//             write(1, "pb\n", 3);
-//             push_b(a, b);
-//             break;
-//         }
-//         write(1, "ra\n", 3);
-//         rotate_a(a);
-//         j++;
-//     }
-// }
-
-void    find_min(t_stack_node *tmp, t_stack_node **a, t_stack_node **b, int size)
+int    find_index(t_stack_node **a)
 {
+    t_stack_node *tmp;
+    int min;
+    int i;
 
-    int smallest;
-    t_stack_node *tmp2;
-
-    smallest = tmp->nbr;
-    tmp = tmp->next;
-    while (tmp)
-    {
-        if (smallest == tmp->nbr)
-            smallest = tmp->nbr;
-        tmp = tmp -> next;
-    }
+    i = 0;
     tmp = *a;
+    min = tmp->nbr;
     while (tmp)
     {
-        if (tmp->nbr == smallest)
-        {
-            write(1, "pb\n", 3);
-            push_b(a, b);
-            break;
-        }
+        if (tmp->nbr < min)
+            min = tmp->nbr;
+        tmp = tmp->next;
+        i++;
+    }
+    return (i);
+}
+int find_min(t_stack_node **a)
+{
+    int min;
+    t_stack_node *tmp;
+
+    tmp = *a;
+    min = tmp->nbr;
+    while (tmp)
+    {
+        if (tmp->nbr < min)
+            min = tmp->nbr;
         tmp = tmp->next;
     }
+    return (min);
 }
-
 
 void    sorted_four_five(t_stack_node **a, t_stack_node **b, int size)
 {
     t_stack_node *tmp;
     int i;
-    int smallest;
 
-    i = 0;
     tmp = *a;
-    while (size > 3)
+    i = 0;
+    while (node_size(*a) > 3)
     {
-        find_min(tmp, a, b, size);
-        size--;
+        // printf("size tmp = %d\n", node_size(*a));
+        if ((*a)->nbr == find_min(a))
+        {
+            // printf("test\n");
+            push_b(a, b);
+        }
+        else if (find_index(a) > node_size(*a) / 2)
+            reverse_rotate_a(a);
+        else
+            rotate_a(a);    
     }
-    sorted_three(a, size);
+    sorted_three(a, node_size(*a));
     push_a(a, b);
-    write(1, "pa\n", 3);
     push_a(a, b);
-    write(1, "pa\n", 3);
 }
+
 
 void sorted_stack(t_stack_node **a, t_stack_node **b, int size)
 {
