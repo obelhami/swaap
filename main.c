@@ -237,42 +237,94 @@ void sorted_three(t_stack_node **a, int size)
 //     }
 // }
 
+// void    search_smallest(t_stack_node *tmp, t_stack_node **a, t_stack_node **b)
+// {
+//     int i;
+//     int j;
+//     int smallest;
+//     t_stack_node *tmp2;
 
-void    sorted_four(t_stack_node **a, t_stack_node **b, int size)
+//     i = 0;
+//     j = 0;
+//     smallest = tmp->nbr;
+//     tmp2 = tmp;
+//     while (tmp)
+//     {
+//         if (tmp->nbr < smallest)
+//         {
+//             smallest = tmp->nbr;
+//             tmp2 = tmp;
+//         }
+//         tmp = tmp->next;
+//         i++;
+//     }
+//     while (j < i)
+//     {
+//         if (tmp2->nbr == (*a)->nbr)
+//         {
+//             write(1, "pb\n", 3);
+//             push_b(a, b);
+//             break;
+//         }
+//         write(1, "ra\n", 3);
+//         rotate_a(a);
+//         j++;
+//     }
+// }
+
+void    find_min(t_stack_node *tmp, t_stack_node **a, t_stack_node **b, int size)
+{
+
+    int smallest;
+    t_stack_node *tmp2;
+
+    smallest = tmp->nbr;
+    tmp = tmp->next;
+    while (tmp)
+    {
+        if (smallest == tmp->nbr)
+            smallest = tmp->nbr;
+        tmp = tmp -> next;
+    }
+    tmp = *a;
+    while (tmp)
+    {
+        if (tmp->nbr == smallest)
+        {
+            write(1, "pb\n", 3);
+            push_b(a, b);
+            break;
+        }
+        tmp = tmp->next;
+    }
+}
+
+
+void    sorted_four_five(t_stack_node **a, t_stack_node **b, int size)
 {
     t_stack_node *tmp;
     int i;
+    int smallest;
 
     i = 0;
     tmp = *a;
-    if (size == 4)
+    while (size > 3)
     {
-        while (i < 2)
-        {
-            if (tmp->nbr > tmp->next->nbr)
-            {
-                write(1, "pb\n", 3);
-                push_b(a, b);
-            }
-            else
-            {
-                write(1, "ra\n", 3);
-                rotate_a(a);
-            }
-            i++;
-        }
-        sorted_three(a, 3);
-        write(1, "pa\n", 3);
-        push_a(a, b);
+        find_min(tmp, a, b, size);
+        size--;
     }
+    sorted_three(a, size);
+    push_a(a, b);
+    write(1, "pa\n", 3);
+    push_a(a, b);
+    write(1, "pa\n", 3);
 }
 
 void sorted_stack(t_stack_node **a, t_stack_node **b, int size)
 {
     sorted_two(a, size);
     sorted_three(a, size);
-    sorted_four(a, b, size);
-
+    sorted_four_five(a, b, size);
 }
 
 int main(int argc, char **argv)

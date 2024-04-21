@@ -47,6 +47,8 @@ void	push_a(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*tmp;
 
+	if (*a == NULL)
+		return ;
 	if (*b)
 	{
 		tmp = *b;
@@ -60,6 +62,8 @@ void	push_b(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*tmp;
 
+	if (*b == NULL)
+		return ;
 	if (*a)
 	{
 		tmp = *a;
