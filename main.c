@@ -169,7 +169,7 @@ void    sorted_three(t_stack_node **a, int size)
             write(1, "rra\n", 4);
             reverse_rotate_a(a);
         }
-        else if (tmp->nbr < tmp->next->nbr && tmp->nbr < tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
+        else if (tmp->nbr < tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
         {
             write(1, "rra\n", 4);
             reverse_rotate_a(a);
