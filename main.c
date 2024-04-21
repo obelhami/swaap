@@ -145,50 +145,133 @@ void    sorted_two(t_stack_node **a, int size)
         swap_a(a);
     }
 }
-void    sorted_three(t_stack_node **a, int size)
+
+void handle_swap_and_rotate(t_stack_node **a, t_stack_node *tmp)
+{
+    if (tmp->nbr > tmp->next->nbr && tmp->nbr < tmp->next->next->nbr)
+    {
+        write(1, "sa\n", 3);
+        swap_a(a);
+    }
+    else if (tmp->nbr < tmp->next->nbr && tmp->nbr < tmp->next->next->nbr
+        && tmp->next->nbr > tmp->next->next->nbr)
+    {
+        write(1, "sa\n", 3);
+        swap_a(a);
+        write(1, "ra\n", 3);
+        rotate_a(a);
+    }
+}
+
+void handle_rotate_and_reverse(t_stack_node **a, t_stack_node *tmp)
+{
+    if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr
+        && tmp->next->nbr < tmp->next->next->nbr)
+    {
+        write(1, "ra\n", 3);
+        rotate_a(a);
+    }
+    else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr
+        && tmp->next->nbr > tmp->next->next->nbr)
+    {
+        write(1, "sa\n", 3);
+        swap_a(a);
+        write(1, "rra\n", 4);
+        reverse_rotate_a(a);
+    }
+    else if (tmp->nbr < tmp->next->nbr && tmp->nbr > tmp->next->next->nbr
+        && tmp->next->nbr > tmp->next->next->nbr)
+    {
+        write(1, "rra\n", 4);
+        reverse_rotate_a(a);
+    }
+}
+
+void sorted_three(t_stack_node **a, int size)
 {
     t_stack_node *tmp;
 
     tmp = *a;
     if (size == 3)
     {
-        if (tmp->nbr > tmp->next->nbr && tmp->nbr < tmp->next->next->nbr)
-        {
-            write(1, "sa\n", 3);
-            swap_a(a);
-        }
-        else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr < tmp->next->next->nbr)
-        {
-            write(1, "ra\n", 3);
-            rotate_a(a);
-        }
-        else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
-        {
-            write(1, "sa\n", 3);
-            swap_a(a);
-            write(1, "rra\n", 4);
-            reverse_rotate_a(a);
-        }
-        else if (tmp->nbr < tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
-        {
-            write(1, "rra\n", 4);
-            reverse_rotate_a(a);
-        }
-        else if (tmp->nbr < tmp->next->nbr && tmp->nbr < tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
-        {
-            write(1, "sa\n", 3);
-            swap_a(a);
-            write(1, "ra\n", 3);
-            rotate_a(a);
-        }
+        handle_swap_and_rotate(a, tmp);
+        handle_rotate_and_reverse(a, tmp);
     }
 }
+// void    sorted_three(t_stack_node **a, int size)
+// {
+//     t_stack_node *tmp;
 
+//     tmp = *a;
+//     if (size == 3)
+//     {
+//         if (tmp->nbr > tmp->next->nbr && tmp->nbr < tmp->next->next->nbr)
+//         {
+//             write(1, "sa\n", 3);
+//             swap_a(a);
+//         }
+//         else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr < tmp->next->next->nbr)
+//         {
+//             write(1, "ra\n", 3);
+//             rotate_a(a);
+//         }
+//         else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
+//         {
+//             write(1, "sa\n", 3);
+//             swap_a(a);
+//             write(1, "rra\n", 4);
+//             reverse_rotate_a(a);
+//         }
+//         else if (tmp->nbr < tmp->next->nbr && tmp->nbr > tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
+//         {
+//             write(1, "rra\n", 4);
+//             reverse_rotate_a(a);
+//         }
+//         else if (tmp->nbr < tmp->next->nbr && tmp->nbr < tmp->next->next->nbr && tmp->next->nbr > tmp->next->next->nbr)
+//         {
+//             write(1, "sa\n", 3);
+//             swap_a(a);
+//             write(1, "ra\n", 3);
+//             rotate_a(a);
+//         }
+//     }
+// }
+
+
+void    sorted_four(t_stack_node **a, t_stack_node **b, int size)
+{
+    t_stack_node *tmp;
+    int i;
+
+    i = 0;
+    tmp = *a;
+    if (size == 4)
+    {
+        while (i < 2)
+        {
+            if (tmp->nbr > tmp->next->nbr)
+            {
+                write(1, "pb\n", 3);
+                push_b(a, b);
+            }
+            else
+            {
+                write(1, "ra\n", 3);
+                rotate_a(a);
+            }
+            i++;
+        }
+        sorted_three(a, 3);
+        write(1, "pa\n", 3);
+        push_a(a, b);
+    }
+}
 
 void sorted_stack(t_stack_node **a, t_stack_node **b, int size)
 {
     sorted_two(a, size);
     sorted_three(a, size);
+    sorted_four(a, b, size);
 
 }
 
