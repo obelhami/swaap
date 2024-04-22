@@ -83,63 +83,7 @@ void	check_characters(char **argv, char **array)
 	check_empty_arg(argv, array);
 }
 
-int	count_string(char *str)
-{
-	int	i;
-	int	count;
 
-	i = 0;
-	count = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i])
-	{
-		if (str[i] == '0')
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-void	check_max_int(char **array)
-{
-	int		i;
-	long	num;
-
-	i = 0;
-	while (array[i])
-	{
-		if (ft_strlen(array[i]) - count_string(array[i]) > 11)
-		{
-			ft_free(array);
-			write(1, "Error5\n", 7);
-			exit(1);
-		}
-		num = ft_atolong(array[i]);
-		if (num > 2147483647 || num < -2147483648)
-		{
-			ft_free(array);
-			write(1, "Error4\n", 7);
-			exit(1);
-		}
-		i++;
-	}
-}
-
-void	fill_array(char **array, char **split, int j, int x)
-{
-	long	num;
-	int		k;
-
-	array[x] = ft_strdup(split[j]);
-	if (array[x] == NULL)
-	{
-		ft_free(array);
-		ft_free(split);
-		write(1, "Error7\n", 7);
-		exit(1);
-	}
-}
 void	check_args(int argc, char **argv, char **array)
 {
 	int		i;

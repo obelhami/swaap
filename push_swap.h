@@ -58,5 +58,11 @@ void					reverse_rotate_r(t_stack_node **a, t_stack_node **b);
 void					free_stack(t_stack_node **a);
 int						node_size(t_stack_node *lst);
 t_stack_node			*new_node(long content);
+void					sorted_stack(t_stack_node **a, t_stack_node **b,
+							int size);
+void					sorted_two(t_stack_node **a, int size);
+void					sorted_three(t_stack_node **a, int size);
+void					sorted_four_five(t_stack_node **a, t_stack_node **b,
+							int size);
 
 #endif
