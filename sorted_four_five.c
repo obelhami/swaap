@@ -48,11 +48,6 @@ static int	find_min(t_stack_node **a)
 
 void	sorted_four_five(t_stack_node **a, t_stack_node **b)
 {
-	int				i;
-	t_stack_node	*tmp;
-
-	tmp = *a;
-	i = 0;
 	while (node_size(*a) > 3)
 	{
 		if ((*a)->nbr == find_min(a))
