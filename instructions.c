@@ -21,8 +21,8 @@ void	swap(t_stack_node **a, char *str)
 		(*a)->next = tmp->next;
 		tmp->next = *a;
 		*a = tmp;
+		write(1, str, ft_strlen(str));
 	}
-	write(1, str, ft_strlen(str));
 }
 
 void	push(t_stack_node **a, t_stack_node **b, char *str)
@@ -35,8 +35,8 @@ void	push(t_stack_node **a, t_stack_node **b, char *str)
 		*b = (*b)->next;
 		tmp->next = *a;
 		*a = tmp;
+		write(1, str, ft_strlen(str));
 	}
-	write(1, str, ft_strlen(str));
 }
 
 void	rotate(t_stack_node **a, char *str)
@@ -53,8 +53,8 @@ void	rotate(t_stack_node **a, char *str)
 			tmp2 = tmp2->next;
 		tmp2->next = tmp;
 		tmp->next = NULL;
+		write(1, str, ft_strlen(str));
 	}
-	write(1, str, ft_strlen(str));
 }
 
 void	reverse_rotate(t_stack_node **a, char *str)
@@ -71,8 +71,8 @@ void	reverse_rotate(t_stack_node **a, char *str)
 		tmp2->next->next = tmp;
 		*a = tmp2->next;
 		tmp2->next = NULL;
+		write(1, str, ft_strlen(str));
 	}
-	write(1, str, ft_strlen(str));
 }
 
 
