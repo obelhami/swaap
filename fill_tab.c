@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	fill_tab(t_stack_node **a, int size)
+int	*fill_tab(t_stack_node **a, int size)
 {
 	int				i;
 	int				*tab;
@@ -27,6 +27,7 @@ void	fill_tab(t_stack_node **a, int size)
 		i++;
 	}
 	sort_tab(tab, size, a);
+	return (tab);
 }
 void	check_sort_tab(t_stack_node **a, int count, int *tab)
 {

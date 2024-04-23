@@ -37,32 +37,29 @@ typedef struct s_stack_node
 void					ft_free(char **array);
 void					check_args(int argc, char **argv, char **array);
 long					ft_atolong(const char *str);
-void					fill_tab(t_stack_node **a, int i);
+int						*fill_tab(t_stack_node **a, int i);
 void					init_stack(t_stack_node **a, char **array);
 void					sort_tab(int *tab, int size, t_stack_node **a);
 void					check_characters(char **argv, char **array);
 void					ft_swap(int *a, int *b);
 int						space(char c);
 int						number_of_args(int argc, char **argv);
-void					swap_a(t_stack_node **a);
-void					swap_b(t_stack_node **b);
-void					swap_s(t_stack_node **a, t_stack_node **b);
-void					push_a(t_stack_node **a, t_stack_node **b);
-void					push_b(t_stack_node **a, t_stack_node **b);
-void					rotate_a(t_stack_node **a);
-void					rotate_b(t_stack_node **b);
-void					rotate_r(t_stack_node **a, t_stack_node **b);
-void					reverse_rotate_a(t_stack_node **a);
-void					reverse_rotate_b(t_stack_node **b);
-void					reverse_rotate_r(t_stack_node **a, t_stack_node **b);
+void					push(t_stack_node **a, t_stack_node **b, char *str);
+void					swap(t_stack_node **a, char *str);
+void					rotate(t_stack_node **a, char *str);
+void					reverse_rotate(t_stack_node **a, char *str);
 void					free_stack(t_stack_node **a);
+int						count_string(char *str);
+void					check_max_int(char **array);
+void					fill_array(char **array, char **split, int j, int x);
+void					check_empty_arg(char **argv, char **array);
+void					check_sort_tab(t_stack_node **a, int count, int *tab);
 int						node_size(t_stack_node *lst);
 t_stack_node			*new_node(long content);
 void					sorted_stack(t_stack_node **a, t_stack_node **b,
-							int size);
+							int size, int *tab);
 void					sorted_two(t_stack_node **a, int size);
 void					sorted_three(t_stack_node **a, int size);
-void					sorted_four_five(t_stack_node **a, t_stack_node **b,
-							int size);
+void					sorted_four_five(t_stack_node **a, t_stack_node **b);
 
 #endif

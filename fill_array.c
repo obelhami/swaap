@@ -38,9 +38,6 @@ void	check_max_int(char **array)
 
 void	fill_array(char **array, char **split, int j, int x)
 {
-	long	num;
-	int		k;
-
 	array[x] = ft_strdup(split[j]);
 	if (array[x] == NULL)
 	{

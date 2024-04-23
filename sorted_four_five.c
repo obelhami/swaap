@@ -46,7 +46,7 @@ static int	find_min(t_stack_node **a)
 	return (min);
 }
 
-void	sorted_four_five(t_stack_node **a, t_stack_node **b, int size)
+void	sorted_four_five(t_stack_node **a, t_stack_node **b)
 {
 	int				i;
 	t_stack_node	*tmp;
@@ -56,13 +56,13 @@ void	sorted_four_five(t_stack_node **a, t_stack_node **b, int size)
 	while (node_size(*a) > 3)
 	{
 		if ((*a)->nbr == find_min(a))
-			push_b(a, b);
+			push(b, a, "pb\n");
 		else if (find_index(a) > node_size(*a) / 2)
-			reverse_rotate_a(a);
+			reverse_rotate(a, "rra\n");
 		else
-			rotate_a(a);
+			rotate(a, "ra\n");
 	}
 	sorted_three(a, node_size(*a));
-	push_a(a, b);
-	push_a(a, b);
+	push(a, b, "pa\n");
+	push(a, b, "pa\n");
 }

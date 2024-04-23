@@ -19,24 +19,24 @@ void	sorted_three(t_stack_node **a, int size)
 	if (size == 3)
 	{
 		if (tmp->nbr > tmp->next->nbr && tmp->nbr < tmp->next->next->nbr)
-			swap_a(a);
+			swap(a, "sa\n");
 		else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr
 			&& tmp->next->nbr < tmp->next->next->nbr)
-			rotate_a(a);
+			rotate(a, "ra\n");
 		else if (tmp->nbr > tmp->next->nbr && tmp->nbr > tmp->next->next->nbr
 			&& tmp->next->nbr > tmp->next->next->nbr)
 		{
-			swap_a(a);
-			reverse_rotate_a(a);
+			swap(a, "sa\n");
+			reverse_rotate(a, "rra\n");
 		}
 		else if (tmp->nbr < tmp->next->nbr && tmp->nbr > tmp->next->next->nbr
 			&& tmp->next->nbr > tmp->next->next->nbr)
-			reverse_rotate_a(a);
+			reverse_rotate(a, "rra\n");
 		else if (tmp->nbr < tmp->next->nbr && tmp->nbr < tmp->next->next->nbr
 			&& tmp->next->nbr > tmp->next->next->nbr)
 		{
-			swap_a(a);
-			rotate_a(a);
+			swap(a, "sa\n");
+			rotate(a, "ra\n");
 		}
 	}
 }

@@ -11,9 +11,26 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	sorted_stack(t_stack_node **a, t_stack_node **b, int size)
+// void	sorted_algo(t_stack_node **a, t_stack_node **b, int size, int *tab)
+// {
+// 	printf("size = %d\n", size);
+	
+// }
+
+void	sorted_stack(t_stack_node **a, t_stack_node **b, int size, int *tab)
 {
-	sorted_two(a, size);
-	sorted_three(a, size);
-	sorted_four_five(a, b, size);
+	if (size == 2)
+		sorted_two(a, size);
+	else if (size == 3)
+		sorted_three(a, size);
+	else if (size == 4 || size == 5)
+		sorted_four_five(a, b);
+	// sorted_algo(a, b, size, tab);
+	int	i;
+	i = 0;
+	while (i < size)
+	{
+		printf("tab[%d] = %d\n", i, tab[i]);
+		i++;
+	}
 }

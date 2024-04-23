@@ -84,8 +84,8 @@ void	init_stack(t_stack_node **a, char **array)
 
 int	main(int argc, char **argv)
 {
-	int				size;
 	char			**array;
+	int				*tab;
 	t_stack_node	*a;
 	t_stack_node	*b;
 
@@ -93,15 +93,14 @@ int	main(int argc, char **argv)
 	b = NULL;
 	if (argc < 2)
 		return (0);
-	size = number_of_args(argc, argv);
 	array = malloc(sizeof(char *) * (number_of_args(argc, argv) + 1));
 	if (!array)
 		return (0);
 	check_characters(argv, array);
 	check_args(argc, argv, array);
 	init_stack(&a, array);
-	fill_tab(&a, number_of_args(argc, argv));
-	sorted_stack(&a, &b, size);
+	tab = fill_tab(&a, number_of_args(argc, argv));
+	sorted_stack(&a, &b, number_of_args(argc, argv), tab);
 	free_stack(&a);
 	return (0);
 }
