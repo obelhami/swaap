@@ -13,9 +13,6 @@
 
 void	sorted_two(t_stack_node **a, int size)
 {
-	t_stack_node *tmp;
-
-	tmp = *a;
 	if (size == 2)
 		swap(a, "sa\n");
 }
