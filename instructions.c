@@ -6,7 +6,7 @@
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 12:07:56 by obelhami          #+#    #+#             */
-/*   Updated: 2024/04/20 12:11:07 by obelhami         ###   ########.fr       */
+/*   Updated: 2024/04/23 23:38:44 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -74,6 +74,3 @@ void	reverse_rotate(t_stack_node **a, char *str)
 		write(1, str, ft_strlen(str));
 	}
 }
-
-
-

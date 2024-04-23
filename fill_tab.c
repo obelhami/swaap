@@ -6,7 +6,7 @@
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:56:54 by obelhami          #+#    #+#             */
-/*   Updated: 2024/04/22 11:56:56 by obelhami         ###   ########.fr       */
+/*   Updated: 2024/04/23 23:34:10 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -29,22 +29,22 @@ int	*fill_tab(t_stack_node **a, int size)
 	sort_tab(tab, size, a);
 	return (tab);
 }
+
 void	check_sort_tab(t_stack_node **a, int count, int *tab)
 {
 	if (count == 0)
 	{
 		free(tab);
 		free_stack(a);
-		write(2, "Error\n", 6);
-		exit(1);
+		exit(0);
 	}
 }
 
 void	sort_tab(int *tab, int size, t_stack_node **a)
 {
-	int i;
-	int j;
-	int number;
+	int	i;
+	int	j;
+	int	number;
 
 	number = 0;
 	i = 0;

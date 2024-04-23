@@ -29,12 +29,9 @@ typedef struct s_index
 {
 	int					range;
 	int					j;
-    // t_stack_node        **a;
-    // t_stack_node        **b;
-    int                 *tab;
-    int                 size;
+	int					*tab;
+	int					size;
 }						t_index;
-
 
 void					ft_free(char **array);
 void					check_args(int argc, char **argv, char **array);

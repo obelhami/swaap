@@ -6,7 +6,7 @@
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 16:37:19 by obelhami          #+#    #+#             */
-/*   Updated: 2024/04/14 16:37:20 by obelhami         ###   ########.fr       */
+/*   Updated: 2024/04/23 23:36:02 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	check_characters(char **argv, char **array)
 	}
 	check_empty_arg(argv, array);
 }
-
 
 void	check_args(int argc, char **argv, char **array)
 {
