@@ -19,20 +19,22 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_index
-{
-	int					i;
-	int					j;
-	int					x;
-	int					size;
-	int					k;
-}						t_index;
-
 typedef struct s_stack_node
 {
 	int					nbr;
 	struct s_stack_node	*next;
 }						t_stack_node;
+
+typedef struct s_index
+{
+	int					range;
+	int					j;
+    // t_stack_node        **a;
+    // t_stack_node        **b;
+    int                 *tab;
+    int                 size;
+}						t_index;
+
 
 void					ft_free(char **array);
 void					check_args(int argc, char **argv, char **array);
