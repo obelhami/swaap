@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_new.c                                          :+:      :+:    :+:   */
+/*   count_string_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/21 15:09:22 by obelhami          #+#    #+#             */
-/*   Updated: 2024/04/21 15:09:47 by obelhami         ###   ########.fr       */
+/*   Created: 2024/04/24 21:45:13 by obelhami          #+#    #+#             */
+/*   Updated: 2024/04/24 21:45:16 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap_bonus.h"
 
-t_stack_node	*new_node(long content, char **array)
+int	count_string(char *str)
 {
-	t_stack_node	*node;
+	int	i;
+	int	count;
 
-	node = malloc(sizeof(t_stack_node));
-	if (!node)
+	i = 0;
+	count = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
 	{
-		ft_free(array);
-		write(2, "Error\n", 6);
-		exit(1);
+		if (str[i] == '0')
+			count++;
+		i++;
 	}
-	node->nbr = content;
-	node->next = NULL;
-	return (node);
+	return (count);
 }

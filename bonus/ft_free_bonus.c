@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   count_string.c                                     :+:      :+:    :+:   */
+/*   ft_free_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 11:59:37 by obelhami          #+#    #+#             */
-/*   Updated: 2024/04/22 13:29:31 by obelhami         ###   ########.fr       */
+/*   Created: 2024/04/24 21:46:55 by obelhami          #+#    #+#             */
+/*   Updated: 2024/04/24 21:46:57 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap_bonus.h"
 
-int	count_string(char *str)
+void	ft_free(char **array)
 {
 	int	i;
-	int	count;
 
 	i = 0;
-	count = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i])
+	while (array[i])
 	{
-		if (str[i] == '0')
-			count++;
+		free(array[i]);
 		i++;
 	}
-	return (count);
+	free(array);
 }

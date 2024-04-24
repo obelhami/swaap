@@ -82,51 +82,56 @@ void	init_stack(t_stack_node **a, char **array)
 	check_double(a);
 }
 
-void	check_instruction(char *line, t_stack_node **a, t_stack_node **b)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (!ft_strncmp(line, "sa", 3))
-		swap(a, "sa");
-	else if (!ft_strncmp(line, "sb", 3))
-		swap(b, "sb");
-	else if (!ft_strncmp(line, "ss", 3))
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+void	check_string(t_stack_node **a, t_stack_node **b, char *line)
+{
+	if (!ft_strcmp(line, "sa\n"))
+		swap(a);
+	else if (!ft_strcmp(line, "sb\n"))
+		swap(b);
+	else if (!ft_strcmp(line, "ss\n"))
 	{
-		swap(a, "ss");
-		swap(b, "ss");
+		swap(a);
+		swap(b);
 	}
-	else if (!ft_strncmp(line, "pa", 3))
-		push(a, b, "pa");
-	else if (!ft_strncmp(line, "pb", 3))
-		push(b, a, "pb");
-	else if (!ft_strncmp(line, "ra", 3))
-		rotate(a, "ra");
-	else if (!ft_strncmp(line, "rb", 3))
-		rotate(b, "rb");
-	else if (!ft_strncmp(line, "rr", 3))
+	else if (!ft_strcmp(line, "pa\n"))
+		push(a, b);
+	else if (!ft_strcmp(line, "pb\n"))
+		push(b, a);
+	else if (!ft_strcmp(line, "ra\n"))
+		rotate(a);
+	else if (!ft_strcmp(line, "rb\n"))
+		rotate(b);
+	else if (!ft_strcmp(line, "rr\n"))
 	{
-		rotate(a, "rr");
-		rotate(b, "rr");
+		rotate(a);
+		rotate(b);
 	}
-	else if (!ft_strncmp(line, "rra", 4))
-		reverse_rotate(a, "rra");
-	else if (!ft_strncmp(line, "rrb", 4))
-		reverse_rotate(b, "rrb");
-	else if (!ft_strncmp(line, "rrr", 4))
+	else if (!ft_strcmp(line, "rra\n"))
+		reverse_rotate(a);
+	else if (!ft_strcmp(line, "rrb\n"))
+		reverse_rotate(b);
+	else if (!ft_strcmp(line, "rrr\n"))
 	{
-		reverse_rotate(a, "rrr");
-		reverse_rotate(b, "rrr");
+		reverse_rotate(a);
+		reverse_rotate(b);
 	}
 	else
 	{
 		free_stack(a);
 		free_stack(b);
-		write(2, "Error\n", 6);
-		exit(1);
+		free(line);
+		exit(write(2, "Error\n", 6));
 	}
-}
-
-void	check_string(t_stack_node **a, t_stack_node **b, char *line)
-{
-	
 }
 
 void	ft_checker(t_stack_node **a, t_stack_node **b, int *tab, int size)
@@ -134,14 +139,31 @@ void	ft_checker(t_stack_node **a, t_stack_node **b, int *tab, int size)
 	int	i;
 	char	*line;
 
-	line = get_next_line(0);
-	while (line != NULL)
+	line = NULL;
+	while (1)
 	{
-		check_string(a, b, line);
 		line = get_next_line(0);
+		if (!line)
+			break ;
+		check_string(a, b, line);
+		free(line);
 	}
-
-
+	i = 0;
+	while (i < size)
+	{
+		if (tab[i] != (*a)->nbr)
+		{
+			free_stack(a);
+			free_stack(b);
+			free(tab);
+			exit(write(1, "KO\n", 3));
+		}
+		rotate(a);
+		i++;
+	}
+	free_stack(a);
+	free_stack(b);
+	write(1, "OK\n", 3);
 }
 
 int	main(int argc, char **argv)

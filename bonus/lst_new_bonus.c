@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   lst_new_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 17:20:28 by obelhami          #+#    #+#             */
-/*   Updated: 2024/04/20 11:44:23 by obelhami         ###   ########.fr       */
+/*   Created: 2024/04/24 21:47:55 by obelhami          #+#    #+#             */
+/*   Updated: 2024/04/24 21:48:04 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap_bonus.h"
 
-void	ft_swap(int *a, int *b)
+t_stack_node	*new_node(long content, char **array)
 {
-	int	temp;
+	t_stack_node	*node;
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
+	node = malloc(sizeof(t_stack_node));
+	if (!node)
+	{
+		ft_free(array);
+		write(2, "Error\n", 6);
+		exit(1);
+	}
+	node->nbr = content;
+	node->next = NULL;
+	return (node);
 }
