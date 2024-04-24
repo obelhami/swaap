@@ -73,6 +73,8 @@ void	sorted_stack(t_stack_node **a, t_stack_node **b, int size, int *tab)
 	t_index	*index;
 
 	index = malloc(sizeof(t_index));
+	if (!index)
+		exit(write(2, "Error\n", 6));
 	index->size = size;
 	index->tab = tab;
 	index->range = 0;

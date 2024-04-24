@@ -22,14 +22,14 @@ void	check_max_int(char **array)
 		if (ft_strlen(array[i]) - count_string(array[i]) > 11)
 		{
 			ft_free(array);
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			exit(1);
 		}
 		num = ft_atolong(array[i]);
 		if (num > 2147483647 || num < -2147483648)
 		{
 			ft_free(array);
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			exit(1);
 		}
 		i++;
@@ -43,7 +43,7 @@ void	fill_array(char **array, char **split, int j, int x)
 	{
 		ft_free(array);
 		ft_free(split);
-		write(1, "Error7\n", 6);
+		write(2, "Error7\n", 6);
 		exit(1);
 	}
 }

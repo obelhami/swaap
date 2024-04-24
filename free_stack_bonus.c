@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_new.c                                          :+:      :+:    :+:   */
+/*   free_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/21 15:09:22 by obelhami          #+#    #+#             */
-/*   Updated: 2024/04/21 15:09:47 by obelhami         ###   ########.fr       */
+/*   Created: 2024/04/20 11:35:41 by obelhami          #+#    #+#             */
+/*   Updated: 2024/04/20 11:38:07 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-t_stack_node	*new_node(long content)
+void	free_stack(t_stack_node **a)
 {
-	t_stack_node	*node;
+	t_stack_node	*tmp;
 
-	node = malloc(sizeof(t_stack_node));
-	if (!node)
-		return (NULL);
-	node->nbr = content;
-	node->next = NULL;
-	return (node);
+	while (*a)
+	{
+		tmp = *a;
+		*a = (*a)->next;
+		free(tmp);
+	}
+	free(*a);
 }

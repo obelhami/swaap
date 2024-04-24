@@ -22,8 +22,7 @@ static int	digit(char c)
 
 int	space(char c)
 {
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
-		|| c == '\r')
+	if (c == ' ' )
 		return (1);
 	return (0);
 }
@@ -50,7 +49,7 @@ void	check_empty_arg(char **argv, char **array)
 	if (count == 0)
 	{
 		free(array);
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 }

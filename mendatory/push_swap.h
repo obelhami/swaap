@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "./libft/libft.h"
+# include "../libft/libft.h"
 # include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -54,14 +54,15 @@ void					fill_array(char **array, char **split, int j, int x);
 void					check_empty_arg(char **argv, char **array);
 void					check_sort_tab(t_stack_node **a, int count, int *tab);
 int						node_size(t_stack_node *lst);
-t_stack_node			*new_node(long content);
+t_stack_node			*new_node(long content, char **array);
 void					sorted_stack(t_stack_node **a, t_stack_node **b,
 							int size, int *tab);
 void					sorted_two(t_stack_node **a, int size);
 void					sorted_three(t_stack_node **a, int size);
 void					sorted_four_five(t_stack_node **a, t_stack_node **b);
-int	                    find_max_stack(t_stack_node **b);
-int	position_max_stack(t_stack_node **b);
-int	position_min_tab(t_index *index, t_stack_node **a, int size_tab);
+int						find_max_stack(t_stack_node **b);
+int						position_max_stack(t_stack_node **b);
+int						position_min_tab(t_index *index, t_stack_node **a,
+							int size_tab);
 
 #endif

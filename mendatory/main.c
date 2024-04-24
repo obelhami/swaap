@@ -66,7 +66,7 @@ void	init_stack(t_stack_node **a, char **array)
 	i = 0;
 	while (array[i])
 	{
-		n_node = new_node(ft_atolong(array[i]));
+		n_node = new_node(ft_atolong(array[i]), array);
 		if (*a == NULL)
 			*a = n_node;
 		else
@@ -101,7 +101,7 @@ int	main(int argc, char **argv)
 	init_stack(&a, array);
 	tab = fill_tab(&a, number_of_args(argc, argv));
 	sorted_stack(&a, &b, number_of_args(argc, argv), tab);
-    free(tab);
+	free(tab);
 	free_stack(&a);
 	return (0);
 }
