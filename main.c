@@ -48,7 +48,7 @@ void	check_double(t_stack_node **a)
 			if (tmp->nbr == tmp2->nbr)
 			{
 				free_stack(a);
-				write(2, "errordbl\n", 9);
+				write(2, "Error\n", 6);
 				exit(1);
 			}
 			tmp2 = tmp2->next;
@@ -101,6 +101,7 @@ int	main(int argc, char **argv)
 	init_stack(&a, array);
 	tab = fill_tab(&a, number_of_args(argc, argv));
 	sorted_stack(&a, &b, number_of_args(argc, argv), tab);
+    free(tab);
 	free_stack(&a);
 	return (0);
 }

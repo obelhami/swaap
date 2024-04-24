@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	swap_rotate(t_stack_node **a, char *str)
+void	swap_rotate(t_stack_node **a)
 {
-	swap(a, str);
-	rotate(a, str);
+	swap(a, "sa\n");
+	rotate(a, "ra\n");
 }
 
 void	sorted_three(t_stack_node **a, int size)
@@ -40,6 +40,6 @@ void	sorted_three(t_stack_node **a, int size)
 			reverse_rotate(a, "rra\n");
 		else if (tmp->nbr < tmp->next->nbr && tmp->nbr < tmp->next->next->nbr
 			&& tmp->next->nbr > tmp->next->next->nbr)
-			swap_rotate(a, "sa\n");
+			swap_rotate(a);
 	}
 }

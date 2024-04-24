@@ -90,4 +90,5 @@ void	sorted_stack(t_stack_node **a, t_stack_node **b, int size, int *tab)
 		sorted_algo(index, a, b, 30);
 	else if (size > 500)
 		sorted_algo(index, a, b, 39);
+	free(index);
 }

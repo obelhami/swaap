@@ -50,7 +50,7 @@ void	check_empty_arg(char **argv, char **array)
 	if (count == 0)
 	{
 		free(array);
-		write(1, "Error8\n", 7);
+		write(1, "Error\n", 6);
 		exit(1);
 	}
 }
@@ -73,7 +73,7 @@ void	check_characters(char **argv, char **array)
 			if (!digit(argv[i][j]) && !space(argv[i][j]))
 			{
 				free(array);
-				write(2, "Error3\n", 7);
+				write(2, "Error\n", 6);
 				exit(1);
 			}
 			j++;

@@ -60,5 +60,8 @@ void					sorted_stack(t_stack_node **a, t_stack_node **b,
 void					sorted_two(t_stack_node **a, int size);
 void					sorted_three(t_stack_node **a, int size);
 void					sorted_four_five(t_stack_node **a, t_stack_node **b);
+int	                    find_max_stack(t_stack_node **b);
+int	position_max_stack(t_stack_node **b);
+int	position_min_tab(t_index *index, t_stack_node **a, int size_tab);
 
 #endif
