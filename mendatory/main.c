@@ -100,7 +100,7 @@ int	main(int argc, char **argv)
 	check_args(argc, argv, array);
 	init_stack(&a, array);
 	tab = fill_tab(&a, node_size(a));
-	sorted_stack(&a, &b, number_of_args(argc, argv), tab);
+	sorted_stack(&a, &b, node_size(a), tab);
 	free(tab);
 	free_stack(&a);
 	return (0);
