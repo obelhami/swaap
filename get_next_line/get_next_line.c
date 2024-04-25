@@ -74,6 +74,8 @@ char	*new_line(char *line)
 	i = 0;
 	while (line[i] && line[i] != '\n')
 		i++;
+	if (line[i] == '\n')
+		i++;
 	if (!line[i])
 	{
 		free(line);
