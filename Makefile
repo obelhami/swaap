@@ -32,7 +32,7 @@ BONUS_OBJS = $(BONUS:.c=.o) $(GNL:.c=.o)
 BONUS_NAME = checker
 NAME 		= push_swap
 CC 			= cc
-CFLAGS 		= -fsanitize=address -g -Wall -Wextra -Werror
+CFLAGS 		= -Wall -Wextra -Werror
 RM 			= rm -f
 
 LIBFT 		= libft/libft.a
