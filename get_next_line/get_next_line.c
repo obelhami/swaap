@@ -81,6 +81,7 @@ char	*new_line(char *line)
 		free(line);
 		return (NULL);
 	}
+	i--;
 	newline = (char *)malloc((ft_strlen(line) - i) + 1);
 	if (!newline)
 		return (NULL);

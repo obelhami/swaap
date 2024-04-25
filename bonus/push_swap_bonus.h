@@ -37,7 +37,7 @@ void					check_double(t_stack_node **a);
 void					init_stack(t_stack_node **a, char **array);
 int						ft_strcmp(const char *s1, const char *s2);
 void					check_string(t_stack_node **a, t_stack_node **b,
-							t_stack_tab *tab);
+							char *line, int *tab);
 void					ft_checker(t_stack_node **a, t_stack_node **b, int *tab,
 							int size);
 int						space(char c);

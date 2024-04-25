@@ -23,23 +23,16 @@ static void	full_free2(t_stack_node **a, t_stack_node **b, int *tab, char *str)
 void	ft_checker(t_stack_node **a, t_stack_node **b, int *tab, int size)
 {
 	int		i;
-	t_stack_tab *stack_tab;
+	char	*line;
 
-	stack_tab = malloc(sizeof(t_stack_tab));
-	if (!stack_tab)
-		free(stack_tab);
-	stack_tab->tab = tab;
-	stack_tab->line = NULL;
+	line = NULL;
 	while (1)
 	{
-		stack_tab->line = get_next_line(0);
-		if (!stack_tab->line)
-		{
-			free(stack_tab->line);
+		line = get_next_line(0);
+		if (!line)
 			break ;
-		}
-		check_string(a, b, stack_tab);
-		free(stack_tab->line);
+		check_string(a, b, line, tab);
+		free(line);
 	}
 	i = 0;
 	while (i < size)
