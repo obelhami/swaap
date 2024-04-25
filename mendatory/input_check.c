@@ -22,7 +22,7 @@ static int	digit(char c)
 
 int	space(char c)
 {
-	if (c == ' ' )
+	if (c == ' ')
 		return (1);
 	return (0);
 }

@@ -28,7 +28,8 @@ void	ft_checker(t_stack_node **a, t_stack_node **b, int *tab, int size)
 	line = NULL;
 	while (1)
 	{
-		line = get_next_line(0);
+		line = get_next_line(0);\
+		printf("line: %s\n", line);
 		if (!line)
 			break ;
 		check_string(a, b, line, tab);
@@ -37,6 +38,8 @@ void	ft_checker(t_stack_node **a, t_stack_node **b, int *tab, int size)
 	i = 0;
 	while (i < size)
 	{
+		if (!*a)
+			full_free2(a, b, tab, "KO\n");
 		if (tab[i] != (*a)->nbr)
 			full_free2(a, b, tab, "KO\n");
 		rotate(a);

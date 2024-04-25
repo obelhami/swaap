@@ -20,6 +20,11 @@ int	*fill_tab(t_stack_node **a, int size)
 	i = 0;
 	tmp = *a;
 	tab = malloc(sizeof(int) * size);
+	if (!tab)
+	{
+		free_stack(a);
+		exit(1);
+	}
 	while (tmp)
 	{
 		tab[i] = tmp->nbr;
