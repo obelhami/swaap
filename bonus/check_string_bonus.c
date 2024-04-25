@@ -63,5 +63,5 @@ void	check_string(t_stack_node **a, t_stack_node **b, char *line, int *tab)
 	else if (!ft_strcmp(line, "rrr\n"))
 		rrr(a, b);
 	else
-		full_free(a, b,line ,tab);
+		full_free(a, b, line, tab);
 }

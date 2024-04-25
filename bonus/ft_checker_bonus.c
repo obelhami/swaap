@@ -28,8 +28,7 @@ void	ft_checker(t_stack_node **a, t_stack_node **b, int *tab, int size)
 	line = NULL;
 	while (1)
 	{
-		line = get_next_line(0);\
-		printf("line: %s\n", line);
+		line = get_next_line(0);
 		if (!line)
 			break ;
 		check_string(a, b, line, tab);

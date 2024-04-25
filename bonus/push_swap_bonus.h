@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef  struct s_stack_tab
+typedef struct s_stack_tab
 {
 	int					*tab;
 	char				*line;
@@ -62,5 +62,6 @@ void					sort_tab(int *tab, int size);
 long					ft_atolong(const char *str);
 void					ft_swap(int *a, int *b);
 t_stack_node			*new_node(long content, char **array);
+int						node_size(t_stack_node *lst);
 
 #endif

@@ -81,11 +81,11 @@ char	*new_line(char *line)
 		free(line);
 		return (NULL);
 	}
-	// i--;
+	i--;
 	newline = (char *)malloc((ft_strlen(line) - i) + 1);
 	if (!newline)
 		return (NULL);
-	// i++;
+	i++;
 	j = 0;
 	while (line[i])
 		newline[j++] = line[i++];

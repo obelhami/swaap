@@ -23,7 +23,7 @@ OBJS = $(SRCS:.c=.o)
 BONUS_FILES = 	main_bonus.c count_string_bonus.c fill_array_bonus.c fill_tab_bonus.c \
 				free_stack_bonus.c ft_free_bonus.c input_check_bonus.c \
 				lst_new_bonus.c ft_atol_bonus.c ft_swap_bonus.c instructions_bonus.c \
-				ft_strcmp_bonus.c ft_checker_bonus.c check_string_bonus.c \
+				ft_strcmp_bonus.c ft_checker_bonus.c check_string_bonus.c node_size_bonus.c 
 
 BONUS = $(addprefix bonus/, $(BONUS_FILES))
 
@@ -32,7 +32,7 @@ BONUS_OBJS = $(BONUS:.c=.o) $(GNL:.c=.o)
 BONUS_NAME = checker
 NAME 		= push_swap
 CC 			= cc
-CFLAGS 		= -Wall -Wextra -Werror
+CFLAGS 		= -fsanitize=address -g -Wall -Wextra -Werror
 RM 			= rm -f
 
 LIBFT 		= libft/libft.a
