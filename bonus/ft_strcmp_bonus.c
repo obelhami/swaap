@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol_bonus.c                                    :+:      :+:    :+:   */
+/*   ft_strcmp_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 21:46:27 by obelhami          #+#    #+#             */
-/*   Updated: 2024/04/24 21:46:30 by obelhami         ###   ########.fr       */
+/*   Created: 2024/04/25 10:45:17 by obelhami          #+#    #+#             */
+/*   Updated: 2024/04/25 10:45:31 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap_bonus.h"
 
-long	ft_atolong(const char *str)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	long	res;
-	int		sign;
+	int i;
 
-	res = 0;
-	sign = 1;
-	while (*str == ' ')
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		res = res * 10 + *str - '0';
-		str++;
-	}
-	return (res * sign);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

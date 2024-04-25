@@ -26,21 +26,11 @@ int	*fill_tab(t_stack_node **a, int size)
 		tmp = tmp->next;
 		i++;
 	}
-	sort_tab(tab, size, a);
+	sort_tab(tab, size);
 	return (tab);
 }
 
-void	check_sort_tab(t_stack_node **a, int count, int *tab)
-{
-	if (count == 0)
-	{
-		free(tab);
-		free_stack(a);
-		exit(0);
-	}
-}
-
-void	sort_tab(int *tab, int size, t_stack_node **a)
+void	sort_tab(int *tab, int size)
 {
 	int	i;
 	int	j;
@@ -62,5 +52,4 @@ void	sort_tab(int *tab, int size, t_stack_node **a)
 		}
 		i++;
 	}
-	check_sort_tab(a, number, tab);
 }
