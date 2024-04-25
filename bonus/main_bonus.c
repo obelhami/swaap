@@ -6,7 +6,7 @@
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:31:27 by obelhami          #+#    #+#             */
-/*   Updated: 2024/04/24 16:31:30 by obelhami         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:08:32 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap_bonus.h"
@@ -84,10 +84,10 @@ void	init_stack(t_stack_node **a, char **array)
 
 int	main(int argc, char **argv)
 {
-	char **array;
-	int *tab;
-	t_stack_node *a;
-	t_stack_node *b;
+	char			**array;
+	int				*tab;
+	t_stack_node	*a;
+	t_stack_node	*b;
 
 	a = NULL;
 	b = NULL;

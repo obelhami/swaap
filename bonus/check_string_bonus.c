@@ -6,36 +6,35 @@
 /*   By: obelhami <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:40:10 by obelhami          #+#    #+#             */
-/*   Updated: 2024/04/25 10:40:11 by obelhami         ###   ########.fr       */
+/*   Updated: 2024/04/25 11:05:36 by obelhami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap_bonus.h"
 
-void    rrr(t_stack_node **a, t_stack_node **b)
+void	rrr(t_stack_node **a, t_stack_node **b)
 {
-    reverse_rotate(a);
-    reverse_rotate(b);
+	reverse_rotate(a);
+	reverse_rotate(b);
 }
 
-void    ss(t_stack_node **a, t_stack_node **b)
+void	ss(t_stack_node **a, t_stack_node **b)
 {
-    swap(a);
-    swap(b);
+	swap(a);
+	swap(b);
 }
 
-static void    full_free(t_stack_node **a, t_stack_node **b, char *line)
+static void	full_free(t_stack_node **a, t_stack_node **b, char *line)
 {
-    free_stack(a);
-    free_stack(b);
-    free(line);
-    exit(write(2, "Error\n", 6));
-
+	free_stack(a);
+	free_stack(b);
+	free(line);
+	exit(write(2, "Error\n", 6));
 }
 
-void    rr(t_stack_node **a, t_stack_node **b)
+void	rr(t_stack_node **a, t_stack_node **b)
 {
-    rotate(a);
-    rotate(b);
+	rotate(a);
+	rotate(b);
 }
 
 void	check_string(t_stack_node **a, t_stack_node **b, char *line)
@@ -45,7 +44,7 @@ void	check_string(t_stack_node **a, t_stack_node **b, char *line)
 	else if (!ft_strcmp(line, "sb\n"))
 		swap(b);
 	else if (!ft_strcmp(line, "ss\n"))
-        ss(a, b);
+		ss(a, b);
 	else if (!ft_strcmp(line, "pa\n"))
 		push(a, b);
 	else if (!ft_strcmp(line, "pb\n"))
@@ -55,13 +54,13 @@ void	check_string(t_stack_node **a, t_stack_node **b, char *line)
 	else if (!ft_strcmp(line, "rb\n"))
 		rotate(b);
 	else if (!ft_strcmp(line, "rr\n"))
-        rr(a, b);
+		rr(a, b);
 	else if (!ft_strcmp(line, "rra\n"))
 		reverse_rotate(a);
 	else if (!ft_strcmp(line, "rrb\n"))
 		reverse_rotate(b);
 	else if (!ft_strcmp(line, "rrr\n"))
-        rrr(a, b);
+		rrr(a, b);
 	else
-        full_free(a, b, line);
+		full_free(a, b, line);
 }
