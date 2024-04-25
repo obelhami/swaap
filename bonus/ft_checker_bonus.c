@@ -34,7 +34,10 @@ void	ft_checker(t_stack_node **a, t_stack_node **b, int *tab, int size)
 	{
 		stack_tab->line = get_next_line(0);
 		if (!stack_tab->line)
+		{
+			free(stack_tab->line);
 			break ;
+		}
 		check_string(a, b, stack_tab);
 		free(stack_tab->line);
 	}
